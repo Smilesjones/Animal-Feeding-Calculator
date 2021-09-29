@@ -1,0 +1,13 @@
+ Instructions:
+
+ 1. Fill in weight of animal.
+
+ 2. Select "Kilo" for kilograms or 
+ "Pound" for pounds.
+
+ 3. Fill in body composition score
+ using above charts.
+
+ 4. Click "Compute" to calculate 
+ suggested amount of food to feed 
+ animal to reach an appropriate weight.

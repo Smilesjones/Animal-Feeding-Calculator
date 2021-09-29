@@ -1,0 +1,10 @@
+score: explanation
+1 : Really skinny
+2 : Pretty skinny
+3 : A little skinny
+4 : small boned
+5 : A healthy look
+6 : big boned
+7 : a little fat
+8 : Really fat
+9 : Obese
