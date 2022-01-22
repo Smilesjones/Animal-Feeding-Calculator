@@ -1,4 +1,10 @@
-
+/*
+ * Filename: AnimalWeightGUI.java
+ *Author: Stephen Jones
+ *Created: 18MAY2018
+ *Update: 22JAN2022
+ *Purpose: Class that defines the GUI, recieves the data, and includes the main method
+ */
 package animal;
 
 import java.awt.BorderLayout;
@@ -24,9 +30,9 @@ import javax.swing.JRadioButton;
 import javax.swing.JTextArea;
 import javax.swing.border.Border;
 import javax.swing.border.TitledBorder;
-//import javax.swing.;
 
 public class AnimalWeightGUI extends JFrame {
+
     //Variables
     private JPanel mainPanel;
     private JLabel idealLabel, weightLabel, bodyLabel, calorieLabel, dayAmtLabel, twiceAmtLabel,
@@ -42,8 +48,6 @@ public class AnimalWeightGUI extends JFrame {
     DecimalFormat df = new DecimalFormat("0.00");
     //Construction with components
     public AnimalWeightGUI(){
-        //this.setFrame(this);
-
 
         mainPanel = new JPanel(new BorderLayout());
 
@@ -157,12 +161,14 @@ public class AnimalWeightGUI extends JFrame {
     }
 
     //Methods
+    // Computes the results
+    // Should probably have most of this in its own class???
     public void computeResults(){
         try{
             int bodyNumInput = Integer.parseInt(bodyText.getText());
             double weightInput = Double.parseDouble(weightText.getText());
             double calorieInput = Double.parseDouble(calorieText.getText());
-
+        // Test for invalid input
         if (bodyNumInput < 0 || weightInput < 0 || calorieInput < 0){
             throw new NegativeNumberException();
         }
@@ -170,6 +176,7 @@ public class AnimalWeightGUI extends JFrame {
             throw new NumberOutOfRangeException();
         }
 
+        // Initiate animal object with input information
         Animal newAnimal = new Animal(bodyNumInput, weightInput, calorieInput);
         if(poundButton.isSelected()){
             weightInput = newAnimal.convertToKilo(weightInput);
@@ -200,19 +207,19 @@ public class AnimalWeightGUI extends JFrame {
         }
 
     }
+
+    // Set the frame specs
     public void setFrame(JFrame aFrame){
         aFrame.setSize(350,370);
         aFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         aFrame.setLocationRelativeTo(null);
         aFrame.setVisible(true);
         aFrame.setTitle("Ideal Weight Calculator");
-        //aFrame.pack();
     }
 
+    // Main method
     public static void main(String[] args) {
-        //create Frame
         JFrame theFrame = new AnimalWeightGUI();
-
     }
 
 }

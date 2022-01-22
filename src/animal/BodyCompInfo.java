@@ -1,7 +1,8 @@
 /*
 Filename: BodyCompInfo.java
 Author: Stephen Jones
-Date: 14MAR2019
+Created: 14MAR2019
+Updated: 22JAN2022
 Purpose: Scans in and formats information about the animal body composition
 score from a text file.
 */
@@ -25,16 +26,15 @@ import java.awt.event.ActionListener;
 import java.io.InputStream;
 
 public class BodyCompInfo  {
+    //Variables
     private Scanner input;
     private JFrame bodyCompFrame;
     private JPanel bodyCompPanel, chartPanel;
     private JTextArea bodyCompTextArea;
     private JButton catChart, dogChart;
-
-    // File retrieval test
     private String bodyCompText = "resources/text/BodyCompInfo.txt";
 
-
+    // Constructor
     public BodyCompInfo() throws FileNotFoundException {
 
         this.input = new Scanner(new FileReader(bodyCompText));
@@ -43,12 +43,15 @@ public class BodyCompInfo  {
         bodyCompPanel = new JPanel(new BorderLayout());
         chartPanel = new JPanel();
 
+        //Text Area
         bodyCompTextArea = new JTextArea();
         bodyCompTextArea.append(this.toString());
 
+        // Animal Chart Buttons
         catChart = new JButton("Cat Chart");
         dogChart = new JButton("Dog Chart");
 
+        // Action listeners
         catChart.addActionListener(e -> getBodyScoreChart("cat"));
         dogChart.addActionListener(e-> getBodyScoreChart ("dog"));
 
@@ -61,6 +64,8 @@ public class BodyCompInfo  {
 
         setInfoFrame(bodyCompFrame);
     }
+
+    //Methods
     public void getBodyScoreChart(String animalType) {
         BodyScoreChart animalBSC = new BodyScoreChart(animalType);
         try {
@@ -70,13 +75,12 @@ public class BodyCompInfo  {
         }
     }
 
-
+    // Set frame specs
     public void setInfoFrame(JFrame aFrame){
         aFrame.setSize(300,300);
         aFrame.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
         aFrame.setLocationRelativeTo(null);
         aFrame.setVisible(true);
-        //aFrame.pack();
     }
 
     @Override
@@ -85,10 +89,6 @@ public class BodyCompInfo  {
         while(input.hasNextLine()){
         compScoreString += input.nextLine() + "\n";
         }
-
         return compScoreString;
     }
-
-
-
 }

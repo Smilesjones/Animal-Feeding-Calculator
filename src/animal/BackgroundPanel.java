@@ -1,7 +1,13 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ *Filename: BackgroundPanel.java
+ *Author: miracleyoo
+ *First Used by Stephen Jones: 18MAY2018
+ *Purpose: Class that defines the background panel for the images
+
+ *Note: This class is largely not my own work, other than slight changes
+ *to make it compatible with my project.
+
+ *Reference: https://gist.github.com/miracleyoo/4bca71d404efd4b85dd473efe9c11d18
  */
 package animal;
 
