@@ -22,6 +22,7 @@ import javax.swing.JPanel;
 import javax.swing.JTextArea;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
+import java.io.InputStream;
 
 public class BodyCompInfo  {
     private Scanner input;
@@ -30,11 +31,13 @@ public class BodyCompInfo  {
     private JTextArea bodyCompTextArea;
     private JButton catChart, dogChart;
 
+    // File retrieval test
+    private String bodyCompText = "resources/text/BodyCompInfo.txt";
+
+
     public BodyCompInfo() throws FileNotFoundException {
 
-        // this.input = new Scanner(new FileReader("text/BodyCompInfo.txt"));
-
-        this.input = new Scanner(new FileReader("BodyCompInfo.txt"));
+        this.input = new Scanner(new FileReader(bodyCompText));
 
         bodyCompFrame = new JFrame("Body Composition Information");
         bodyCompPanel = new JPanel(new BorderLayout());

@@ -37,37 +37,37 @@ public class AnimalWeightGUI extends JFrame {
     private JRadioButton kiloButton, poundButton;
     private Border inputBorder, outputBorder, blackline, grayLine;
     private Font titleFontFormat;
-    
+
     //Decimal format for all calculations
     DecimalFormat df = new DecimalFormat("0.00");
     //Construction with components
     public AnimalWeightGUI(){
         //this.setFrame(this);
-        
-        
+
+
         mainPanel = new JPanel(new BorderLayout());
-        
-        
+
+
         JPanel northGrid = new JPanel(new GridLayout(5,2));
         JPanel southGrid = new JPanel(new GridLayout(4,2));
         JPanel radioButtonPanel = new JPanel();
-        
+
         //Borders
         grayLine = BorderFactory.createLineBorder(Color.GRAY, 1);
         blackline = BorderFactory.createLineBorder(Color.BLACK, 1);
         titleFontFormat = new java.awt.Font ("Monospaced", 0, 12);
-        inputBorder = BorderFactory.createTitledBorder(grayLine, 
+        inputBorder = BorderFactory.createTitledBorder(grayLine,
                 "Animal Information",
-                TitledBorder.DEFAULT_JUSTIFICATION, 
+                TitledBorder.DEFAULT_JUSTIFICATION,
                 TitledBorder.DEFAULT_POSITION,
                 titleFontFormat, Color.GRAY);
-        outputBorder = BorderFactory.createTitledBorder(grayLine, 
+        outputBorder = BorderFactory.createTitledBorder(grayLine,
                 "Feeding Suggestions",
                 TitledBorder.DEFAULT_JUSTIFICATION,
                 TitledBorder.DEFAULT_POSITION,
-                titleFontFormat, 
+                titleFontFormat,
                 Color.GRAY);
-        
+
         //Labels
         emptyLabel = new JLabel("");
         weightLabel = new JLabel ("  Animal's Current Weight:");
@@ -78,7 +78,7 @@ public class AnimalWeightGUI extends JFrame {
         dayAmtLabel = new JLabel ("  Cups Per Day:");
         twiceAmtLabel = new JLabel ("  Cups Twice A Day:");
         thriceAmtLabel = new JLabel ("  Cups Three Times A Day:");
-        
+
         //Text Fields
         weightText = new JTextField();
         weightText.setToolTipText("Enter in pet's current weight and choose kilo or pound.");
@@ -98,13 +98,13 @@ public class AnimalWeightGUI extends JFrame {
         thriceAmtText = new JTextField();
         thriceAmtText.setEditable(false);
         thriceAmtText.setToolTipText("Amount of food, in cups, to feed pet three times a day.");
-        
+
         //Button
         computeButton = new JButton("Compute");
         computeButton.setToolTipText("Click to compute results.");
         mainPanel.add(computeButton, BorderLayout.CENTER);
         bodyCompInfoButton = new JButton("Instructions");
-        
+
         //radio buttons
         kiloButton = new JRadioButton("Kilo");
         poundButton = new JRadioButton("Pound");
@@ -114,7 +114,7 @@ public class AnimalWeightGUI extends JFrame {
         group.add(poundButton);
         radioButtonPanel.add(kiloButton);
         radioButtonPanel.add(poundButton);
-      
+
         //add to the northGrid
         northGrid.add(bodyCompInfoLabel);
         northGrid.add(bodyCompInfoButton);
@@ -127,7 +127,7 @@ public class AnimalWeightGUI extends JFrame {
         northGrid.add(calorieLabel);
         northGrid.add(calorieText);
         northGrid.setBorder(inputBorder);
-        
+
         //add to the southGrid
         southGrid.add(idealLabel);
         southGrid.add(idealText);
@@ -138,13 +138,13 @@ public class AnimalWeightGUI extends JFrame {
         southGrid.add(thriceAmtLabel);
         southGrid.add(thriceAmtText);
         southGrid.setBorder(outputBorder);
-        
+
         //add to the main panel
         mainPanel.add(northGrid, BorderLayout.NORTH);
         mainPanel.add(southGrid, BorderLayout.SOUTH);
         this.add(mainPanel);
         setFrame(this);
-        
+
         //actionlisteners
         computeButton.addActionListener(e -> computeResults());
         bodyCompInfoButton.addActionListener(e -> {
@@ -155,21 +155,21 @@ public class AnimalWeightGUI extends JFrame {
             }
         });
     }
-    
+
     //Methods
     public void computeResults(){
         try{
             int bodyNumInput = Integer.parseInt(bodyText.getText());
             double weightInput = Double.parseDouble(weightText.getText());
             double calorieInput = Double.parseDouble(calorieText.getText());
-        
+
         if (bodyNumInput < 0 || weightInput < 0 || calorieInput < 0){
             throw new NegativeNumberException();
         }
         if (bodyNumInput > 9 || bodyNumInput == 0){
             throw new NumberOutOfRangeException();
         }
-        
+
         Animal newAnimal = new Animal(bodyNumInput, weightInput, calorieInput);
         if(poundButton.isSelected()){
             weightInput = newAnimal.convertToKilo(weightInput);
@@ -198,7 +198,7 @@ public class AnimalWeightGUI extends JFrame {
             JOptionPane.showMessageDialog(null, "Please enter a positive value",
                     "Negative Number Error", JOptionPane.ERROR_MESSAGE);
         }
-        
+
     }
     public void setFrame(JFrame aFrame){
         aFrame.setSize(350,370);
@@ -208,11 +208,11 @@ public class AnimalWeightGUI extends JFrame {
         aFrame.setTitle("Ideal Weight Calculator");
         //aFrame.pack();
     }
-    
+
     public static void main(String[] args) {
         //create Frame
         JFrame theFrame = new AnimalWeightGUI();
-        
+
     }
-    
+
 }
