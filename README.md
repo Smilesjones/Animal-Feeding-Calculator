@@ -40,7 +40,7 @@
   <li>Then run the main method file
     <ul>
       <li>
-        <code>src$ java animal/AnimalWeightGUI.java</code>
+        <code>src$ java animal/AnimalWeightGUI</code>
       </li>
     </ul>
   </li>
